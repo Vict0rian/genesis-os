@@ -1,13 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import MindfulnessCard from './components/MindfulnessCard'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div></div>
+    <div>
+      <MindfulnessCard
+        title="Mindful Breathing"
+        description="A simple exercise to focus on your breath."
+        xp={10}
+      />
+    </div>
   )
 }
 
