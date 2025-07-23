@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from './Card';
 
 interface MindfulnessCardProps {
   title: string;
@@ -8,7 +9,7 @@ interface MindfulnessCardProps {
 
 const MindfulnessCard: React.FC<MindfulnessCardProps> = ({ title, description, xp }) => {
   return (
-    <div style={{ border: '1px solid #ccc', padding: '16px', borderRadius: '8px', margin: '16px 0' }}>
+    <Card>
       <h2><strong>{title}</strong></h2>
       <p>{description}</p>
       <div style={{
@@ -21,7 +22,7 @@ const MindfulnessCard: React.FC<MindfulnessCardProps> = ({ title, description, x
       }}>
         {xp} XP
       </div>
-    </div>
+    </Card>
   );
 };
 
