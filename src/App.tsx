@@ -6,26 +6,76 @@ import QuoteCard from './components/QuoteCard'
 import Header from './components/Header'
 import QuestList from './components/QuestList'
 import StatsCard from './components/StatsCard'
+import { levels } from './levels'
+
+interface Skill {
+  currentXp: number
+  levelName: string
+  xpForNextLevel: number
+}
+
+const getLevelInfo = (xp: number) => {
+  const currentLevel = levels
+    .slice()
+    .reverse()
+    .find((level) => xp >= level.threshold)
+  const nextLevel = levels.find((level) => xp < level.threshold)
+  return {
+    levelName: currentLevel ? currentLevel.name : 'Oblivious',
+    xpForNextLevel: nextLevel ? nextLevel.threshold : currentLevel!.threshold,
+  }
+}
 
 function App() {
-  const [intellectXp, setIntellectXp] = useState(150)
-  const [creativityXp, setCreativityXp] = useState(300)
-  const [fitnessXp, setFitnessXp] = useState(500)
+  const [intellect, setIntellect] = useState<Skill>({
+    currentXp: 150,
+    ...getLevelInfo(150),
+  })
+  const [creativity, setCreativity] = useState<Skill>({
+    currentXp: 300,
+    ...getLevelInfo(300),
+  })
+  const [fitness, setFitness] = useState<Skill>({
+    currentXp: 500,
+    ...getLevelInfo(500),
+  })
 
   const addXp = (skill: string, amount: number) => {
+    const updater = (prev: Skill) => {
+      const newXp = prev.currentXp + amount
+      return {
+        currentXp: newXp,
+        ...getLevelInfo(newXp),
+      }
+    }
     switch (skill) {
       case 'intellect':
-        setIntellectXp(intellectXp + amount)
+        setIntellect(updater)
         break
       case 'creativity':
-        setCreativityXp(creativityXp + amount)
+        setCreativity(updater)
         break
       case 'fitness':
-        setFitnessXp(fitnessXp + amount)
+        setFitness(updater)
         break
       default:
         break
     }
+  }
+
+  const resetProgress = () => {
+    setIntellect({
+      currentXp: 0,
+      ...getLevelInfo(0),
+    })
+    setCreativity({
+      currentXp: 0,
+      ...getLevelInfo(0),
+    })
+    setFitness({
+      currentXp: 0,
+      ...getLevelInfo(0),
+    })
   }
 
   return (
@@ -39,11 +89,8 @@ function App() {
         />
         <QuestList addXp={addXp} />
         <QuoteCard />
-        <StatsCard
-          intellectXp={intellectXp}
-          creativityXp={creativityXp}
-          fitnessXp={fitnessXp}
-        />
+        <StatsCard intellect={intellect} creativity={creativity} fitness={fitness} />
+        <button onClick={resetProgress}>Reset Progress</button>
       </Layout>
     </div>
   )
