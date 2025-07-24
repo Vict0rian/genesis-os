@@ -6,7 +6,7 @@ import QuoteCard from './components/QuoteCard'
 import Header from './components/Header'
 import QuestList from './components/QuestList'
 import StatsCard from './components/StatsCard'
-import { levels } from './levels'
+import { levels } from './data/gamedata'
 
 interface Skill {
   currentXp: number
