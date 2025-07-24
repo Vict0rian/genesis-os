@@ -1,0 +1,10 @@
+.header {
+  background-color: #ff0000;
+  border-bottom: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
