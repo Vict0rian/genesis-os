@@ -1,47 +1,71 @@
 import './StatsCard.css'
 
+interface Skill {
+  currentXp: number
+  levelName: string
+  xpForNextLevel: number
+}
+
 interface StatsCardProps {
-  intellectXp: number
-  creativityXp: number
-  fitnessXp: number
+  intellect: Skill
+  creativity: Skill
+  fitness: Skill
 }
 
 const StatsCard: React.FC<StatsCardProps> = ({
-  intellectXp,
-  creativityXp,
-  fitnessXp,
+  intellect,
+  creativity,
+  fitness,
 }) => {
   return (
     <div className="card">
       <h2>Skills</h2>
       <ul>
         <li>
-          <div className="skill-name">Intellect</div>
-          <div className="skill-xp">{intellectXp} / 1000 XP</div>
+          <div className="skill-name">
+            Intellect <span>({intellect.levelName})</span>
+          </div>
+          <div className="skill-xp">
+            {intellect.currentXp} / {intellect.xpForNextLevel} XP
+          </div>
           <div className="progress-bar">
             <div
               className="progress"
-              style={{ width: `${(intellectXp / 1000) * 100}%` }}
+              style={{
+                width: `${(intellect.currentXp / intellect.xpForNextLevel) * 100}%`,
+              }}
             ></div>
           </div>
         </li>
         <li>
-          <div className="skill-name">Creativity</div>
-          <div className="skill-xp">{creativityXp} / 1000 XP</div>
+          <div className="skill-name">
+            Creativity <span>({creativity.levelName})</span>
+          </div>
+          <div className="skill-xp">
+            {creativity.currentXp} / {creativity.xpForNextLevel} XP
+          </div>
           <div className="progress-bar">
             <div
               className="progress"
-              style={{ width: `${(creativityXp / 1000) * 100}%` }}
+              style={{
+                width: `${(creativity.currentXp / creativity.xpForNextLevel) * 100}%`,
+              }}
             ></div>
           </div>
         </li>
         <li>
-          <div className="skill-name">Fitness</div>
-          <div className="skill-xp">{fitnessXp} / 1000 XP</div>
+          <div className="skill-name">
+            Fitness <span>({fitness.levelName})</span>
+          </div>
+          <div className="skill-xp">
+            {fitness.currentXp} / {fitness.xpForNextLevel} XP
+          </div>
           <div className="progress-bar">
             <div
               className="progress"
-              style={{ width: `${(fitnessXp / 1000) * 100}%` }}
+              style={{
+                width: `${(fitness.currentXp / fitness.xpForNextLevel) * 100}%`,
+              }}
             ></div>
           </div>
         </li>
