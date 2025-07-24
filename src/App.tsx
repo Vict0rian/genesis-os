@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Layout from './components/Layout'
 import MindfulnessCard from './components/MindfulnessCard'
@@ -27,18 +27,45 @@ const getLevelInfo = (xp: number) => {
 }
 
 function App() {
-  const [intellect, setIntellect] = useState<Skill>({
-    currentXp: 150,
-    ...getLevelInfo(150),
+  const [intellect, setIntellect] = useState<Skill>(() => {
+    const savedIntellect = localStorage.getItem('intellect')
+    return savedIntellect
+      ? JSON.parse(savedIntellect)
+      : {
+          currentXp: 150,
+          ...getLevelInfo(150),
+        }
   })
-  const [creativity, setCreativity] = useState<Skill>({
-    currentXp: 300,
-    ...getLevelInfo(300),
+  const [creativity, setCreativity] = useState<Skill>(() => {
+    const savedCreativity = localStorage.getItem('creativity')
+    return savedCreativity
+      ? JSON.parse(savedCreativity)
+      : {
+          currentXp: 300,
+          ...getLevelInfo(300),
+        }
   })
-  const [fitness, setFitness] = useState<Skill>({
-    currentXp: 500,
-    ...getLevelInfo(500),
+  const [fitness, setFitness] = useState<Skill>(() => {
+    const savedFitness = localStorage.getItem('fitness')
+    return savedFitness
+      ? JSON.parse(savedFitness)
+      : {
+          currentXp: 500,
+          ...getLevelInfo(500),
+        }
   })
+
+  useEffect(() => {
+    localStorage.setItem('intellect', JSON.stringify(intellect))
+  }, [intellect])
+
+  useEffect(() => {
+    localStorage.setItem('creativity', JSON.stringify(creativity))
+  }, [creativity])
+
+  useEffect(() => {
+    localStorage.setItem('fitness', JSON.stringify(fitness))
+  }, [fitness])
 
   const addXp = (skill: string, amount: number) => {
     const updater = (prev: Skill) => {
@@ -90,7 +117,9 @@ function App() {
         <QuestList addXp={addXp} />
         <QuoteCard />
         <StatsCard intellect={intellect} creativity={creativity} fitness={fitness} />
-        <button onClick={resetProgress}>Reset Progress</button>
+        <button onClick={resetProgress} className="reset-button">
+          Reset Progress
+        </button>
       </Layout>
     </div>
   )
