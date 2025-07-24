@@ -4,6 +4,7 @@ import MindfulnessCard from './components/MindfulnessCard'
 import QuoteCard from './components/QuoteCard'
 import Header from './components/Header'
 import QuestList from './components/QuestList'
+import StatsCard from './components/StatsCard'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         />
         <QuestList />
         <QuoteCard />
+        <StatsCard />
       </Layout>
     </div>
   )
