@@ -10,16 +10,9 @@ interface MindfulnessCardProps {
 const MindfulnessCard: React.FC<MindfulnessCardProps> = ({ title, description, xp }) => {
   return (
     <Card>
-      <h2><strong>{title}</strong></h2>
+      <h2 className="text-lg font-bold">{title}</h2>
       <p>{description}</p>
-      <div style={{
-        backgroundColor: 'blue',
-        color: 'white',
-        padding: '4px 8px',
-        borderRadius: '4px',
-        display: 'inline-block',
-        fontSize: '12px'
-      }}>
+      <div className="bg-blue-500 text-white py-1 px-2 rounded inline-block text-xs">
         {xp} XP
       </div>
     </Card>

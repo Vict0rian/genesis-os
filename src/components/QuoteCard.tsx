@@ -2,9 +2,10 @@ import Card from './Card';
 
 const QuoteCard = () => {
   return (
-    <Card title="Quote of the Day">
+    <Card>
+      <h2 className="text-lg font-bold">Quote of the Day</h2>
       <p>"The only way to do great work is to love what you do."</p>
-      <p><em>- Steve Jobs</em></p>
+      <p className="italic">- Steve Jobs</p>
     </Card>
   );
 };
