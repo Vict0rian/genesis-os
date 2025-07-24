@@ -1,9 +1,10 @@
 import React from 'react';
+import './Header.css';
 
 const Header: React.FC = () => {
   return (
-    <header className="text-center py-4">
-      <h1 className="text-5xl font-bold text-white">Genesis OS</h1>
+    <header className="header">
+      <h1>Genesis OS</h1>
     </header>
   );
 };
