@@ -3,6 +3,7 @@ import Layout from './components/Layout'
 import MindfulnessCard from './components/MindfulnessCard'
 import QuoteCard from './components/QuoteCard'
 import Header from './components/Header'
+import QuestList from './components/QuestList'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           description="A simple exercise to focus on your breath."
           xp={10}
         />
+        <QuestList />
         <QuoteCard />
       </Layout>
     </div>
