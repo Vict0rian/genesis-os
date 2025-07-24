@@ -1,0 +1,30 @@
+.stats-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.stats-card li {
+  margin-bottom: 1rem;
+}
+
+.skill-name {
+  font-weight: bold;
+}
+
+.skill-xp {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.progress-bar {
+  background-color: #eee;
+  border-radius: 5px;
+  height: 10px;
+  width: 100%;
+}
+
+.progress {
+  background-color: #4caf50;
+  border-radius: 5px;
+  height: 100%;
+}
