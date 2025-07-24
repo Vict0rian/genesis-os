@@ -9,6 +9,11 @@
 
 .skill-name {
   font-weight: bold;
+  color: white;
+}
+
+.card h2 {
+  color: white;
 }
 
 .skill-xp {
